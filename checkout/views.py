@@ -37,10 +37,10 @@ def checkout(request):
     """
     Handle checkout
     """
-
+    """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-
+    """
     if request.method == 'POST':
         bag = request.session.get('bag', {})
         discount = request.session.get('session_discount', {})
@@ -58,8 +58,8 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            pid = request.POST.get('client_secret').split('_secret')[0]
-            order.stripe_pid = pid
+            # pid = request.POST.get('client_secret').split('_secret')[0]
+            # order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             order.discount = discount
             order.save()

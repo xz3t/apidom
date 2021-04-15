@@ -82,6 +82,7 @@
                 </div>
             </div>
             <div class="col-12 col-lg-6">
+                <!--
                     <div class="text-center">
                         <button id="on-delivery" class="btn my-btn">
                             <span class="text-uppercase">{% trans 'Pay on delivery' %}</span>
@@ -89,9 +90,9 @@
                         <button id="by-card" class="btn my-btn">
                             <span class="text-uppercase">{% trans 'Pay by card' %}</span>
                         </button>
-                    </div>
+                    </div>-->
                 <!-- stripe payment form  -->
-                <div class="stripe-pay">
+                <div class="">
                 <p class="text-muted">{% trans 'Please fill out the form below to complete your order' %}</p>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
@@ -120,20 +121,21 @@
                                 </label>
 							{% endif %}
 						</div>
-                    </fieldset>
+                    </fieldset><!--
                     <fieldset class="px-3">
                         <legend class="fieldset-label small text-black px-2 w-auto">{% trans 'Payment' %}</legend>
-                        <!-- A Stripe card element will go here -->
-                        <div class="mb-3" id="card-element"></div>
+                         A Stripe card element will go here 
+                        <div class="mb-3" id="card-element"></div>-->
 
-                        <!-- Used to display form errors -->
+                        <!-- Used to display form errors 
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                    
                     </fieldset>
                         <p class="small text-danger my-0 text-right">
 							<i class="fas fa-exclamation-circle"></i>
 						<span>{% trans 'Your card will be charged' %} <strong>MDL {{ grand_total|floatformat:2 }}</strong></span>	
-                        </p>
+                        </p>-->
                         <p class="text-center">
                         <button id="submit-button" class="btn my-btn">
 							<span class="font-weight-bold text-uppercase">{% trans 'Complete Order' %}</span>
@@ -142,10 +144,10 @@
 
                 </form>
             </div>
-            <!-- pay on delivery form-->
+            <!-- pay on delivery form
                 <div class="order-pay-delivery mt-5">
                  <h3> {% trans "Feature coming soon..." %}</h3>
-                </div>
+                </div>-->
                     <div class="submit-button text-left mt-5 mb-2">                    
 						<a href="{% url 'view_bag' %}" class="btn btn-outline-black rounded-0">
 								<i class="fas fa-chevron-left"></i>
@@ -166,7 +168,7 @@
 {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+<!--   <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 
     <script>
         $(document).ready(function() {
@@ -180,5 +182,5 @@
             });
         }); 
     </script>
-
+-->
 {% endblock %}
